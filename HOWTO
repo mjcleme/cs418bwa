@@ -1,0 +1,7 @@
+bwa index chr19.fa 
+bwa aln chr19.fa 19.smallest.fastq > 19.small.sai
+bwa samse chr19.fa 19.small.sai 19.smallest.fastq > 19.small.sam
+samtools view -bT chr19.fa 19.small.sam > 19.small.bam
+samtools sort 19.small.bam 19.small.sorted
+samtools index 19.small.sorted.bam
+samtools tview 19.small.sorted.bam chr19.fa
